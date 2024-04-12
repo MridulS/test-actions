@@ -22,4 +22,4 @@ jobs:
         with:
           python-version: '3.X'
       - run: pip install copier
-      - run: copier update
+      - run: copier update --skip-answered --vcs-ref=HEAD
