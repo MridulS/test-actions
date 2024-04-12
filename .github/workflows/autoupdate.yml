@@ -11,6 +11,9 @@ jobs:
       matrix:
         project:
           - 'mriduls/esssans'
+          # - 'scipp/sciline'
+          # - 'scipp/scippnexus'
+          # - 'scipp/scippneutron'
     name: Update downstream projects
     runs-on: 'ubuntu-latest'
     steps:
@@ -23,12 +26,12 @@ jobs:
           python-version: '3.X'
       - run: pip install copier
       - run: copier update --skip-answered --vcs-ref=HEAD
-      # - run: git add .
-      # - run: git commit -m "Update ${{ matrix.project }}"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT }}
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           title: Sync ${{ matrix.project }} with copier template
-          assignees: MridulS
+          body: |
+            This PR updates the project to the latest version of scipp's [copier-template](https://github.com/scipp/copier_template).
+            Remember to check for any conflicts and resolve them.
