@@ -29,3 +29,6 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT }}
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          title: Sync ${{ matrix.project }} with copier template
+          assignees: MridulS
