@@ -14,7 +14,7 @@ jobs:
           - 'scipp/sciline'
           - 'scipp/scippnexus'
           - 'scipp/scippneutron'
-          
+
     name: Update downstream projects
     runs-on: 'ubuntu-latest'
     steps:
@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: '3.X'
       - run: pip install copier
-      - run: copier update --skip-answered --vcs-ref=HEAD
+      - run: copier update --skip-answered --vcs-ref=HEAD --conflict=rej
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
