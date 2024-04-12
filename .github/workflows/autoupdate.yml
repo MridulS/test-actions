@@ -22,4 +22,10 @@ jobs:
         with:
           python-version: '3.X'
       - run: pip install copier
+      - run: git checkout -b update_copier_actions
       - run: copier update --skip-answered --vcs-ref=HEAD
+      - run: git add .
+      - run: git commit -m "Update ${{ matrix.project }}"
+      - run: gh create-pr --base main --head update_copier_actions --title "Update ${{ matrix.project }}" --body "Update ${{ matrix.project }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
