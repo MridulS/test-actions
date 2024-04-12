@@ -10,10 +10,11 @@ jobs:
     strategy:
       matrix:
         project:
-          - 'mriduls/esssans'
-          # - 'scipp/sciline'
-          # - 'scipp/scippnexus'
-          # - 'scipp/scippneutron'
+          - 'scipp/esssans'
+          - 'scipp/sciline'
+          - 'scipp/scippnexus'
+          - 'scipp/scippneutron'
+          
     name: Update downstream projects
     runs-on: 'ubuntu-latest'
     steps:
