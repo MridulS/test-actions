@@ -1,0 +1,25 @@
+name: Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    strategy:
+      matrix:
+        project:
+          - 'mriduls/esssans'
+    name: Update downstream projects
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repo: ${{ matrix.project }}
+      # - run: echo "Update ${{ matrix.project }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.X'
+      - run: pip install copier
+      - run: copier update
