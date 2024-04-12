@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repo: ${{ matrix.project }}
+          repository: ${{ matrix.project }}
       # - run: echo "Update ${{ matrix.project }}"
       - uses: actions/setup-python@v5
         with:
